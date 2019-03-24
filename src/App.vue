@@ -15,6 +15,7 @@
     </div>
     <div class="row" style="height: 15%; padding-top: 1vw;">
       <div class="col-md-12">
+        <h2 style="text-align: left;">{{ time }}</h2>
       </div>
     </div>
   </div>
@@ -28,13 +29,25 @@ import './app.css'
 @Component({
   components: {}
 })
-export default class App extends Vue {}
+export default class App extends Vue {
+  private time: string = ''
+
+  private mounted (): void {
+    setInterval(() => {
+      this.time = new Date().toLocaleString()
+    }, 1000)
+  }
+}
 </script>
 
 <style>
 h1 {
   font-size: 3.5em;
   text-align: left;
+}
+
+h2 {
+  font-size: 2.5em;
 }
 
 #app {
