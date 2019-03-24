@@ -7,6 +7,9 @@
       <div class="col-md-5">
         <div>
           <h1>Weather <span class="material-icons">cloud</span></h1>
+          <img :src="'http://openweathermap.org/img/w/' + weather.icon + '.png'" style="width: 25%;">
+          <h2>{{ weather.temp + '°F' }}</h2>
+          <h2>{{ weather.description }}</h2>
         </div>
         <div>
           <h1>Shuttles <span class="material-icons">airport_shuttle</span></h1>
@@ -42,11 +45,25 @@ export default class App extends Vue {
   private error: boolean = false
   private info: Map<string, { prediction: string, title: string }> = new Map()
   private time: string = ''
+  private weather: { description: string, icon: string, temp: number } = { description: '', icon: '', temp: 0 }
+  private weatherError: boolean = false
 
   private mounted (): void {
     setInterval(() => {
       this.time = new Date().toLocaleString()
     }, 1000)
+    fetch('weather.py').then((data) => {
+      return data.json()
+    }).then((data) => {
+      this.weather = {
+        description: data.weather[0].description,
+        icon: data.weather[0].icon,
+        temp: Math.floor(data.main.temp)
+      }
+    }).catch((error) => {
+      console.log(error)
+      this.weatherError = true
+    })
 
     fetch('http://webservices.nextbus.com/service/publicJSONFeed?command=predictionsForMultiStops&a=mit' +
       '&stops=tech|tangwest&stops=saferidecampshut|tangwest').then((data) => {
