@@ -2,14 +2,14 @@
   <div id="app" class="container-fluid" style="height: 98vh; padding-top: 2vh; padding-left: 2vw;">
     <div class="row" style="height: 85%;">
       <div class="col-md-7" style="height: 100%;">
-        <h1>Announcements</h1>
+        <h1>Announcements <span class="material-icons">announcement</span></h1>
       </div>
       <div class="col-md-5">
         <div>
-          <h1>Weather</h1>
+          <h1>Weather <span class="material-icons">cloud</span></h1>
         </div>
         <div>
-          <h1>Shuttles</h1>
+          <h1>Shuttles <span class="material-icons">airport_shuttle</span></h1>
         </div>
       </div>
     </div>
