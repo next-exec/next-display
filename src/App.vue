@@ -1,8 +1,10 @@
 <template>
   <div id="app" class="container-fluid" style="height: 98vh; padding-top: 2vh; padding-left: 2vw;">
     <div class="row" style="height: 85%;">
-      <div class="col-md-7" style="height: 100%;">
-        <h1>Announcements <span class="material-icons">announcement</span></h1>
+      <div class="col-md-7" style="height: 100%; display: flex; flex-direction: column;">
+        <h1 style="flex: 0 1 auto;">Announcements <span class="material-icons">announcement</span></h1>
+        <div style="background-repeat: no-repeat; background-size: contain; flex: 1;" :style="{'background-image': 'url(' + currentImage + ')'}">
+        </div>
       </div>
       <div class="col-md-5">
         <div>
@@ -42,6 +44,7 @@ import './app.css'
   components: {}
 })
 export default class App extends Vue {
+  private currentImage: string = ''
   private error: boolean = false
   private info: Map<string, { prediction: string, title: string }> = new Map()
   private time: string = ''
@@ -83,6 +86,17 @@ export default class App extends Vue {
         this.error = true
         console.log(error)
       })
+
+    fetch('config.json').then((data) => {
+      return data.json()
+    }).then((data) => {
+      this.currentImage = data[0]
+      setInterval(() => {
+        this.currentImage = data[Math.floor(Math.random() * data.length)]
+      }, 5000)
+    }).catch((error) => {
+      console.log(error)
+    })
   }
 }
 </script>
