@@ -1,29 +1,35 @@
 # next-display
+> The front desk TV display webpage.
 
-## Project setup
-```
-yarn install
-```
+next-display is the webpage shown to visitors and residents of Next House on
+the front desk TV when walking in. It handles announcements from student
+groups and the Exec team and displays the current time, weather, and campus
+shuttle tracking information.
 
-### Compiles and hot-reloads for development
-```
-yarn run serve
-```
+## Usage
+See the [Installation](#installation) instructions on how to initially build
+this project.
 
-### Compiles and minifies for production
-```
-yarn run build
-```
+Simply place these files in any server path, and these files will be served as
+a static resource. Nothing else is needed for this to work.
 
-### Run your tests
-```
-yarn run test
-```
+## Installation
+Before you proceed further, make sure you have the following dependencies
+installed in order to build this project:
+- [Node.js](https://nodejs.org/en/)
+- [Vue CLI](https://cli.vuejs.org/)
+- [Yarn](https://yarnpkg.com/en/)
 
-### Lints and fixes files
+You will need to clone this repository in order to compile all of the assets
+for deployment:
+```bash
+git clone git@github.com:next-exec/next-display.git
+cd next-display/
 ```
-yarn run lint
+Once this is done, install the dependencies and then run the build command.
+```bash
+yarn
+yarn build
 ```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+The build output will be located in `/dist/`. See [Usage](#usage) on how to
+deploy this.
