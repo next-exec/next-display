@@ -10,6 +10,15 @@
         </div>
         <div>
           <h1>Shuttles <span class="material-icons">airport_shuttle</span></h1>
+          <h2 v-if="info.size === 0">No shuttles are currently being tracked.</h2>
+          <table>
+            <tbody>
+              <tr v-for="item in info.values()">
+                <td style="text-align: left;"><h2>{{ item.title }}</h2></td>
+                <td><h2>{{ item.prediction + ' ' + (item.prediction === '1' ? 'minute' : 'minutes') }}</h2></td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </div>
@@ -30,12 +39,33 @@ import './app.css'
   components: {}
 })
 export default class App extends Vue {
+  private error: boolean = false
+  private info: Map<string, { prediction: string, title: string }> = new Map()
   private time: string = ''
 
   private mounted (): void {
     setInterval(() => {
       this.time = new Date().toLocaleString()
     }, 1000)
+
+    fetch('http://webservices.nextbus.com/service/publicJSONFeed?command=predictionsForMultiStops&a=mit' +
+      '&stops=tech|tangwest&stops=saferidecampshut|tangwest').then((data) => {
+        return data.json()
+      }).then((data) => {
+        const info = new Map()
+        for (const route of data.predictions) {
+          if (route.direction !== undefined) {
+            info.set(route.routeTag, {
+              prediction: route.direction.prediction[0].minutes,
+              title: route.routeTitle
+            })
+          }
+        }
+        this.info = info
+      }).catch((error) => {
+        this.error = true
+        console.log(error)
+      })
   }
 }
 </script>
@@ -48,6 +78,10 @@ h1 {
 
 h2 {
   font-size: 2.5em;
+}
+
+table {
+  width: 100%;
 }
 
 #app {
