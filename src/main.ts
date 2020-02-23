@@ -1,3 +1,5 @@
+import 'whatwg-fetch'
+
 import Vue from 'vue'
 import App from './App.vue'
 
