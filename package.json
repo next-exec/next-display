@@ -17,11 +17,11 @@
     "whatwg-fetch": "3.0.0"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "4.0.5",
-    "@vue/cli-plugin-typescript": "3.5.1",
-    "@vue/cli-service": "3.5.1",
+    "@vue/cli-plugin-babel": "4.2.2",
+    "@vue/cli-plugin-typescript": "4.2.2",
+    "@vue/cli-service": "4.2.2",
     "tslint-config-standard": "8.0.1",
-    "typescript": "3.3.4000",
+    "typescript": "3.7.5",
     "vue-template-compiler": "2.6.10"
   }
 }
