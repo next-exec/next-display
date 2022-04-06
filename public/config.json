@@ -1,3 +1,5 @@
 [
-  "announcements/next.png"
+  { "type": "text", "data": "Welcome to Next House! We're so happy to have you here for CPW!"},
+  { "type": "text", "data": "Events today:\nNone yet!\n(It's Wednesday.)"},
+  { "type": "image", "data": "announcements/next.png" }
 ]

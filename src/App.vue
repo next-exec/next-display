@@ -1,12 +1,16 @@
 <template>
   <div id="app" class="container-fluid" style="height: 98vh; padding-top: 2vh; padding-left: 2vw;">
-    <div class="row" style="height: 85%;">
-      <div class="col-md-7" style="height: 100%; display: flex; flex-direction: column;">
-        <h1 style="flex: 0 1 auto;">Announcements <span class="material-icons">announcement</span></h1>
-        <div style="background-repeat: no-repeat; background-size: contain; flex: 1;" :style="{'background-image': 'url(' + currentImage + ')'}">
+    <div class="row mb-4" style="height: 85%;">
+      <div class="col-md-7" style="height: 100%; display: flex; flex-direction: column">
+        <h1 class="mb-2">Announcements <span class="material-icons">announcement</span></h1>
+        <div style="height: 100%; display: flex; flex-direction: column; justify-content: center">
+        <p class="ml-2 mr-2" style="white-space: pre-line" v-if="currentAnnouncement.type == 'text'">{{ currentAnnouncement.data }}</p>
+        <img v-else :src="currentAnnouncement.data"/>
         </div>
+        <!--<div class="mt-4" style="background-repeat: no-repeat; background-size: contain; flex: 1;" :style="{'background-image': 'url(' + currentImage + ')'}">
+        </div>-->
       </div>
-      <div class="col-md-5">
+      <div class="col-md-5" style="height: 100%; display: flex; flex-direction: column; justify-content: space-between; align-items: center;">
         <div>
           <h1>Weather <span class="material-icons">cloud</span></h1>
           <img :src="'http://openweathermap.org/img/w/' + weather.icon + '.png'" style="width: 25%;">
@@ -18,7 +22,7 @@
           <h2 v-if="info.size === 0">No shuttles are currently being tracked.</h2>
           <table>
             <tbody>
-              <tr v-for="item in info.values()">
+              <tr v-for="item in info.values()" v-bind:key="item.title">
                 <td style="text-align: left;"><h2>{{ item.title }}</h2></td>
                 <td><h2>{{ item.prediction + ' ' + (item.prediction === '1' ? 'minute' : 'minutes') }}</h2></td>
               </tr>
@@ -44,7 +48,8 @@ import './app.css'
   components: {}
 })
 export default class App extends Vue {
-  private currentImage: string = ''
+  private currentAnnouncement: {type: "image" | "text", data: string} = { type: "text", data: 'hello!'};
+  private currentAnnouncementIndex: number = 0;
   private error: boolean = false
   private info: Map<string, { prediction: string, title: string }> = new Map()
   private time: string = ''
@@ -68,7 +73,7 @@ export default class App extends Vue {
       this.weatherError = true
     })
 
-    fetch('http://webservices.nextbus.com/service/publicJSONFeed?command=predictionsForMultiStops&a=mit' +
+    fetch('https://retro.umoiq.com/service/publicJSONFeed?command=predictionsForMultiStops&a=mit' +
       '&stops=tech|tangwest&stops=saferidecampshut|tangwest').then((data) => {
         return data.json()
       }).then((data) => {
@@ -88,12 +93,15 @@ export default class App extends Vue {
       })
 
     fetch('config.json').then((data) => {
-      return data.json()
+      return data.json();
     }).then((data) => {
-      this.currentImage = data[0]
+      this.currentAnnouncementIndex = Math.floor(Math.random() * data.length);
+      this.currentAnnouncement = data[this.currentAnnouncementIndex];
       setInterval(() => {
-        this.currentImage = data[Math.floor(Math.random() * data.length)]
-      }, 5000)
+        this.currentAnnouncementIndex += 1;
+        this.currentAnnouncementIndex %= data.length;
+        this.currentAnnouncement = data[this.currentAnnouncementIndex];
+      }, 10000)
     }).catch((error) => {
       console.log(error)
     })
@@ -103,12 +111,17 @@ export default class App extends Vue {
 
 <style>
 h1 {
-  font-size: 3.5em;
+  font-size: 5em;
   text-align: left;
 }
 
 h2 {
-  font-size: 2.5em;
+  font-size: 3em;
+}
+
+p {
+  font-size: 4em;
+  text-align: center;
 }
 
 table {
