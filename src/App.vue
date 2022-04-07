@@ -31,7 +31,7 @@
         </div>
         <div>
           <h1>Coming Up <span class="material-icons">schedule</span></h1>
-          <h2>{{ `${upcoming.title}: ${new Date(upcoming.start).toLocaleString()}` }}</h2>
+          <h3>{{ `${upcoming.title}: ${new Date(upcoming.start).toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' })} (${upcoming.location})` }}</h3>
         </div>
       </div>
     </div>
@@ -107,8 +107,10 @@ export default class App extends Vue {
 
       let events = this.events.filter(event => (new Date(event.start) < new Date()) && (new Date() < new Date(event.end)));
 
-      for(let event of events){
-        this.announcements.push({type: "text", data: `Happening now: ${event.title} (${event.location})`})
+      if (this.announcements.length == 0 || data.mixEvents){
+        for(let event of events){
+          this.announcements.push({type: "text", data: `Happening now: ${event.title} (${event.location})`})
+        }
       }
 
       let upcoming = this.events.filter(event => new Date() < new Date(event.start)).sort(event => new Date(event.start).valueOf()- new Date().valueOf());

@@ -1,11 +1,9 @@
 {
   "announcements": [
-    { "type": "text", "data": "Welcome to Next House! We're so happy to have you here for CPW!"},
     {
       "type": "text",
       "data": "Reserve your ticket for Next Act tonight! tinyurl.com/nactdrowsy"
-    },
-    { "type": "image", "data": "announcements/next.png" }
+    }
   ],
   "mixEvents": true,
   "events": [
