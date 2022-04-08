@@ -12,13 +12,13 @@
       </div>
       <div class="col-md-4" style="height: 100%; display: flex; flex-direction: column; justify-content: space-between; align-items: center;">
         <div>
-          <h1>Weather <span class="material-icons">cloud</span></h1>
+          <h1 style="text-align: center;">Weather <span class="material-icons">cloud</span></h1>
           <img :src="'http://openweathermap.org/img/w/' + weather.icon + '.png'" style="width: 25%;">
           <h2>{{ weather.temp + '°F' }}</h2>
           <h2>{{ weather.description }}</h2>
         </div>
         <div>
-          <h1>Shuttles <span class="material-icons">airport_shuttle</span></h1>
+          <h1 style="text-align: center;">Shuttles <span class="material-icons">airport_shuttle</span></h1>
           <h3 v-if="info.size === 0">No shuttles are currently being tracked.</h3>
           <table>
             <tbody>
@@ -30,8 +30,15 @@
           </table>
         </div>
         <div>
-          <h1>Coming Up <span class="material-icons">schedule</span></h1>
-          <h3>{{ `${upcoming.title}: ${new Date(upcoming.start).toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' })} (${upcoming.location})` }}</h3>
+          <h1 style="text-align: center;">Coming Up <span class="material-icons">schedule</span></h1>
+          <table>
+            <tbody>
+              <tr v-for="upcoming in upcoming.values()" v-bind:key="upcoming.title">
+                <td style="text-align: left;"><h3>{{ upcoming.title }}</h3></td>
+                <td><h3>{{ `${new Date(upcoming.start).toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' })} (${upcoming.location})` }}</h3></td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </div>
@@ -56,7 +63,7 @@ export default class App extends Vue {
   private currentAnnouncementIndex: number = 0;
   private announcements: Array<{type: "image" | "text", data: string}> = [];
   private events: Array<{start: string, end: string, location: string, title: string}> = [];
-  private upcoming: {start: string, end: string, location: string, title: string} = {start: '', end: '', location: '', title: ''};
+  private upcoming: Array<{start: string, end: string, location: string, title: string}> = [];
   private error: boolean = false
   private info: Map<string, { prediction: string, title: string }> = new Map()
   private time: string = ''
@@ -114,7 +121,7 @@ export default class App extends Vue {
       }
 
       let upcoming = this.events.filter(event => new Date() < new Date(event.start)).sort(event => new Date(event.start).valueOf()- new Date().valueOf());
-      this.upcoming = upcoming[0];
+      this.upcoming = upcoming.slice(0, 3);
       
       this.currentAnnouncementIndex = Math.floor(Math.random() * this.announcements.length);
       this.currentAnnouncement = this.announcements[this.currentAnnouncementIndex];
