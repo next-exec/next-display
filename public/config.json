@@ -1,25 +1,10 @@
 {
   "announcements": [
-    {
-      "type": "text",
-      "data": "Next Act is currently showing! Please be quiet near the theater area and do not go through any curtains."
-    },
-    {
-      "type": "text",
-      "data": "Next Act is currently running! Please quietly pass through the courtyard to access the rest of the house."
-    },
-    {
-    "type": "text",
-    "data": "Next Big Thing is rescheduled to tonight, party starts in the courtyard at 10:30pm!"
-    },
-    {
-      "type": "text",
-      "data": "Poker Chips and Chips is in Dining! Follow instructions to go through the courtyard."
-    },
-  {"type": "image", "data": "announcements/courtyard-1.jpg"},
-  {"type": "image", "data": "announcements/courtyard-2.jpg"}
+  {"type": "image", "data": "announcements/next.png" },
+  {"type": "text", "data": "Thanks for visiting Next House! We loved having you for CPW and hope to see you here in the future!"},
+  {"type": "text", "data": "Thanks for attending Next House CPW events! Travel safely and we hope to see you back in August!"}
   ],
-  "mixEvents": false,
+  "mixEvents": true,
   "events": [
     {"title": "Fire and Ice I", "location": "Courtyard", "start": "2022-04-07T14:00", "end": "2022-04-07T16:00"},
     {"title": "Next Bake", "location": "Country Kitchen", "start": "2022-04-07T15:00", "end": "2022-04-07T18:00"},
@@ -35,14 +20,14 @@
     {"title": "impromptu concert", "location": "4W Main Lounge", "start": "2022-04-08T23:00", "end": "2022-04-09T01:00"},
     {"title": "Lego my Eggo", "location": "Country Kitchen", "start": "2022-04-09T08:00", "end": "2022-04-09T10:00"},
     {"title": "Make your Own Pizza", "location": "Country Kitchen", "start": "2022-04-09T12:00", "end": "2022-04-09T14:00"},
-    {"title": "Next Art", "location": "Courtyard", "start": "2022-04-09T14:00", "end": "2022-04-09T16:00"},
+    {"title": "Next Art", "location": "3W Main Lounge", "start": "2022-04-09T14:00", "end": "2022-04-09T16:00"},
     {"title": "Next Gamers", "location": "Basement", "start": "2022-04-09T14:00", "end": "2022-04-09T16:00"},
     {"title": "Fire and Ice II", "location": "Country Kitchen", "start": "2022-04-09T16:00", "end": "2022-04-09T17:00"},
     {"title": "Powerpoint Karaoke", "location": "Private Dining Room", "start": "2022-04-09T17:00", "end": "2022-04-09T18:00"},
     {"title": "Next Act", "location": "TFL", "start": "2022-04-09T20:00", "end": "2022-04-09T22:00"},
-    {"title": "Next Sing Karaoke", "location": "Basement", "start": "2022-04-09T22:00", "end": "2022-04-10T01:00"},
+    {"title": "Next Sing Karaoke", "location": "Basement", "start": "2022-04-09T22:30", "end": "2022-04-10T01:00"},
     {"title": "Next Haunt", "location": "Private Dining Room", "start": "2022-04-09T22:00", "end": "2022-04-10T01:00"},
-    {"title": "Midnight Pancakes", "location": "Country Kitchen", "start": "2022-04-09T23:00", "end": "2022-04-10T01:00"},
+    {"title": "Midnight Pancakes", "location": "Country Kitchen", "start": "2022-04-09T22:00", "end": "2022-04-10T01:00"},
     {"title": "Mid-Morning Pancakes", "location": "Country Kitchen", "start": "2022-04-10T08:00", "end": "2022-04-10T11:00"}
   ]
 }

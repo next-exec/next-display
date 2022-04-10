@@ -1,0 +1,86 @@
+[
+    {
+        "type": "text",
+        "data": "Welcome to Next House! We're so happy to have you here for CPW!"
+    },
+    {
+        "type": "image",
+        "data": "announcements/next.png"
+    },
+    {
+        "type": "text",
+        "data": "Reserve your ticket for Next Act tonight: tinyurl.com/nactdrowsy"
+    },
+    {
+        "type": "text",
+        "data": "Next Act is currently showing! Please be quiet near the theater area and do not go through any curtains."
+    },
+    {
+        "type": "text",
+        "data": "Next Act is currently running! Please quietly pass through the courtyard to access the rest of the house."
+    },
+    {
+        "type": "text",
+        "data": "Bubble Tea Social is in the Country Kitchen! Follow instructions to go through the courtyard, then go downstairs."
+    },
+    {
+        "type": "text",
+        "data": "Bubble Tea Social is in the Country Kitchen! Pass through the TFL, then go downstairs."
+    },
+    {
+        "type": "text",
+        "data": "Next Big Thing is currently on hold due to weather. Updates will be posted here!"
+    },
+    {
+        "type": "text",
+        "data": "Next Big Thing is rescheduled to tonight, party starts in the courtyard at 10:30pm!"
+    },
+    {
+        "type": "text",
+        "data": "Poker Chips and Chips is in Dining! Follow instructions to go through the courtyard."
+    },
+    {
+        "type": "text",
+        "data": "Next Big Thing is rescheduled to tonight, party is on in the courtyard!"
+    },
+    {
+        "type": "image",
+        "data": "announcements/courtyard-1.jpg"
+    },
+    {
+        "type": "image",
+        "data": "announcements/courtyard-2.jpg"
+    },
+      {
+        "type": "text",
+        "data": "Next Sing will be starting at 10:30pm, right after Next Act finishes. Thanks for your patience!"
+    },
+      {
+        "type": "text",
+        "data": "Next Sing will be starting at 10:30pm, right after Next Act finishes. Stop by the Country Kitchen and get pancakes while you wait!"
+    },
+    {
+        "type": "text",
+        "data": "Final show tonight! Reserve your ticket for Next Act: tinyurl.com/nactdrowsy"
+    },
+    {
+        "type": "text",
+        "data": "Due to weather, Next Art is being moved to 3W Main Lounge. Go up the stairs to the 3rd floor, then turn right!"
+    },
+    {
+        "type": "text",
+        "data": "Next Haunt is in the Private Dining Room! Follow instructions to go through the courtyard, then enter dining."
+    },
+    {
+        "type": "text",
+        "data": "Midnight Pancakes is in the Country Kitchen! Follow instructions to go through the courtyard, then go downstairs."
+    },
+    {
+        "type": "text",
+        "data": "Thanks for visiting Next House! We loved having you for CPW and hope to see you here in the future!"
+    },
+    {
+        "type": "text",
+        "data": "Thanks for attending Next House CPW events! Travel safely and we hope to see you back in August!"
+    }
+]
